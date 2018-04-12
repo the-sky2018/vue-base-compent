@@ -1,6 +1,6 @@
 <template>
 	<transition  name="fade">
-		<div >
+		<div class="move-box">
 			<div class="title" @mousedown="_mousedown">124466</div>
 		</div>
 	</transition>
@@ -14,7 +14,9 @@
 		},
 		data () {
 			return {
-				closed: false
+				closed: false,
+				down: false,
+				$root : $(this.$el)
 			}
 		},
 		computed: {
@@ -24,37 +26,54 @@
 			_mousedown: function($e) {
 				this.down = true;
 				console.log($e)
-			    $(this.$el).data('startX', $e.clientX);
-			    this.$el.data('startY', $e.clientY);
+			    this.$root.data('startX', $e.clientX);
+			    this.$root.data('startY', $e.clientY);
 			    $(document).on('mousemove.moveBox', this._docMouseMove)
-			    		   .on('mouseup.moveBox', this._docMouseUp);
+			    	.on('mouseup.moveBox', this._docMouseUp);
 			},
 			_docMouseMove: function($e) {
 			    var curX = $e.clientX;
 			    var curY = $e.clientY;
-			    var deltaX = curX - this.$el.data('startX');
-			    var deltaY = curY - this.$el.data('startY');
-			    this.$el.dataset.startX = curX;
-			    this.$el.dataset.startY = curY;
-			    var curpos = this.$el.position();
+			    var deltaX = curX - this.$root.data('startX');
+			    var deltaY = curY - this.$root.data('startY');
+			    this.$root.data("startX", curX);
+			    this.$root.data("startY", curY);
+			    var curpos = this.$root.position();
 			    var left = curpos.left + deltaX;
 			    var top = curpos.top + deltaY;
 			    left = left < 0 ? 0 : left;
 			    top = top < 0 ? 0 : top;
 			    var winWidth = $(window).width();
 			    var winHeight = $(window).height();
-			    var width = this.$el.outerWidth();
-			    var height = this.$el.outerHeight();
+			    var width = this.$root.outerWidth();
+			    var height = this.$root.outerHeight();
 			    if (left + width > winWidth) {
 			      left = winWidth - width;
 			    }
 			    if (top + height > winHeight) {
 			      top = winHeight - height;
 			    }
-			    this.$el.css('left', left);
-			    this.$el.css('top', top);
-			    this.$('>header').css('cursor', 'move');
+			    this.$root.css('left', left);
+			    this.$root.css('top', top);
+			    this.root.find('.title').css('cursor', 'move');
 			}
-		}
+		},
+		_docMouseUp: function($e) {
+		    $(document).off('mousemove.moveBox', this._docMouseMove)
+		    	.off('mousemove.moveBox', this._docMouseUp)
+		    this.root.find('.title').css('cursor', 'default');
+		  },
 	}
 </script>
+<style lang="scss">
+	.move-box{
+		position: fixed;
+		overflow-y: auto;
+		z-index: 10001;
+		left:0;
+		top: 0;
+		width: 200px;
+		height: 200px;
+		border: solid 1px;
+	}
+</style>

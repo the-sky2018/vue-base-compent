@@ -1,0 +1,169 @@
+//
+// Tab component
+//------------------------------------
+$tab-diver-border-color: #ccc !default;
+$tab-title-disabled-color:#ccc !default;
+$tab-active-bar-color:#333 !default;
+$tab-nav-height: 36px !default;
+.m-tabs {
+  position: relative;
+  .tab-wrapper {
+    position: relative;
+    &.bar-top {
+      border-top: 1px solid $tab-diver-border-color;
+    }
+    &.bar-bottom {
+      border-bottom: 1px solid $tab-diver-border-color;
+    }
+    .tab-nav {
+      display: inline-block;
+      position: relative;
+      line-height: $tab-nav-height;
+      .tabs {
+        display: inline-block;
+        .tab-title {
+          cursor: pointer;
+          text-align: center;
+          padding: 0 20px;
+        }
+        .tab-title.disabled {
+          color: $tab-title-disabled-color;
+        }
+      }
+      .active-bar {
+        position: absolute;
+        height: 2px;
+        background-color: $tab-active-bar-color;
+        z-index: 2;
+      }
+      .active-bar.forward {
+        @include transition(right 0.2s linear, left 0.1s 0.1s linear);
+      }
+      .active-bar.backward {
+        @include transition(left 0.2s linear, right 0.1s 0.1s linear);
+      }
+    }
+    &.bar-top {
+      .active-bar {
+        top: -1px;
+      }
+    }
+    &.bar-bottom {
+      .active-bar {
+        bottom: -1px;
+      }
+    }
+  }
+  // tab-panel-wrapper
+  .tab-panel-wrapper {
+    position: relative;
+    .tab-panel {
+      display: none;
+    }
+  }
+  .tab-panel-active {
+    display: block !important;
+  }
+}
+
+.tab-bar-vertical {
+  &.tab-bar-left {
+    .tab-wrapper {
+      float: left;
+      .tab-nav .tabs .tab-title {
+        text-align: left;
+      }
+    }
+  }
+  &.tab-bar-right {
+    .tab-wrapper {
+      float: right;
+      .tab-nav .tabs .tab-title {
+        text-align: right;
+      }
+    }
+  }
+  .tab-panel-wrapper {
+    overflow: auto;
+  }
+  .tab-wrapper {
+    .tab-nav {
+      display: block;
+      .tabs {
+        display: block;
+        .tab-title {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+// 全屏模式
+.tab-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  .tab-panel-wrapper,
+  {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+  }
+  &.tab-bar-vertical {
+    .tab-wrapper {
+      height: 100%;
+    }
+  }
+}
+
+// tab标题水平对齐
+.title-left {
+  .tab-wrapper {
+    text-align: left;
+  }
+}
+
+.title-center {
+  .tab-wrapper {
+    text-align: center;
+  }
+}
+
+.title-right {
+  .tab-wrapper {
+    text-align: right;
+  }
+}
+
+.app-tab-theme {
+  border:1px solid $border-color;
+  .tab-wrapper {
+    background-color: $baseGray02;
+    border-bottom: solid 1px $border-color;
+    text-align: center;
+    .tab-nav {
+      .tabs {
+        .tab-title.tab-title-active {
+          background-color: white;
+          border-bottom-color: transparent;
+        }
+        .tab-title {
+          display: inline-block;
+          border: solid 1px $border-color;
+          border-top: none;
+          margin-left: -1px;
+          margin-bottom: -1px;
+          &:first-child{
+            margin-left: 0px;
+          }
+        }
+      }
+    }
+  }
+}
+

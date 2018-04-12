@@ -36,9 +36,14 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'underscore': require.resolve('underscore')
     }
   },
-
+  plugins: [
+    new webpack.ProvidePlugin({
+      _: 'underscore'
+    })
+  ],
   module: {
     rules: [
       // ...(config.dev.useEslint ? [createLintingRule()] : []),
@@ -82,7 +87,26 @@ module.exports = {
             loader: 'expose-loader',
             options: '$'
         }]
-      }
+      },
+      {
+        test: require.resolve('underscore'),
+        use: [{
+            loader: 'expose-loader',
+            options: '_'
+        }]
+      },
+      {
+        test: /\.scss$/,
+        use: [{
+            loader: 'style-loader'
+        }, {
+            loader: 'css-loader'
+        }, {
+            loader: 'sass-loader'
+        }],
+        // fallback: 'style-loader'
+
+      },
     ]
   },
   node: {

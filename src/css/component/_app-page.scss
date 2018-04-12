@@ -1,0 +1,80 @@
+.app-page{
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:60;
+    background-color: white;
+    font-size:14px;
+}
+.app-page-bg-layer{    
+    z-index:59;
+    background-color: rgba(0,0,0,0.3);
+    @include position(absolute,0 0 0 0);    
+}
+
+html.app-page-opened{
+    body{
+        overflow: hidden;
+    }
+    .app-page-bg-layer{
+        @include animation(fadeIn 0.4s cubic-bezier(.26, .47, 0, .94) both);
+    }
+    .app-page {
+         @include animation(slideIn 0.4s cubic-bezier(.26, .47, 0, .94) 0.3s both);
+        
+    }
+}
+html.app-page-closed{
+
+    body{overflow: hidden;}
+
+    .app-page {
+        @include animation(slideOut 0.4s cubic-bezier(.26, .47, 0, .94)  both);
+    }
+    .app-page-bg-layer{
+        @include animation(fadeOut 0.4s cubic-bezier(.26, .47, 0, .94) 0.3s both);
+    }
+}
+
+
+
+@include keyframes(fadeIn){
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@include keyframes(fadeOut){
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+@include keyframes(slideIn){
+    from{
+        //opacity: .5;
+        @include transform(translateY(-100%));
+    }
+    to{
+        //opacity: 1;
+        @include transform(translateY(0%));
+    }
+}
+
+@include keyframes(slideOut){
+    from{
+        //opacity: 1;
+        @include transform(translateY(0%));
+    }
+    to{
+        //opacity: .5;
+        @include transform(translateY(-100%));
+    }
+}

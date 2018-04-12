@@ -1,0 +1,102 @@
+$chooser-border-color: #ccc !default;
+$chosen-item-bg-color: #E0E0E0 !default;
+$chosen-item-color: #333 !default;
+$chooser-placeholder-color:#737373 !default;
+$chooser-height:36px !default;
+$chooser-bg-color:white;
+$chooser-dropdown-item-hover-bg: #f0f0f0;
+.char-width {
+  position: absolute;
+  top: -10000px;
+  visibility: hidden;
+}
+
+.chooser {
+  border: 1px solid $chooser-border-color;
+  position: relative;
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: $chooser-height;
+  background-color: $chooser-bg-color;
+  &.disabled {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+  }
+  >* {
+    margin: 0;
+    padding: 0;
+  }
+  .placeholder {
+    color: $chooser-placeholder-color;
+    position: absolute;
+    left: 8px;
+    line-height: $chooser-height;
+  }
+  .chooser-input {
+    border: 1px solid transparent;
+    position: relative;
+    background-color: transparent;
+    outline: none;
+    line-height: inherit;
+    font-size: inherit;
+    min-width: 1em;
+  }
+  .chosen-list {
+    display: inline-block;
+    list-style: none;
+    width: 100%;
+    margin-top: 3px;
+    li {
+      display: inline-block;
+      margin: 4px 0 4px 4px;
+      height: 1.5em;
+      vertical-align: middle;
+    }
+    li.input {
+      max-width: 100%;
+    }
+    li.chosen {
+      border: 1px solid $chooser-border-color;
+      border-radius: 2px;
+      background-color: $chosen-item-bg-color;
+      padding-left: 4px;
+      padding-right: 4px;
+      .close {
+        font-family: Arial, Helvetica, sans-serif !important;
+        font-size: 16px;
+        line-height: 18px;
+        margin-left: 4px;
+        cursor: pointer;
+        vertical-align: middle;
+      }
+    }
+    li.chosen.pre-remove {
+      background-color: lighten($chosen-item-bg-color, 5%);
+      color: lighten($chosen-item-color, 40%);
+      border-color: lighten($chooser-border-color, 10%);
+    }
+  }
+  .dropdown {
+    display: none;
+    position: absolute;
+    list-style: none;
+    overflow: auto;
+    width: 100%;
+    left: -1px;
+    border: 1px solid $chooser-border-color;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    .no-match {
+      padding: 10px;
+    }
+    li {
+      cursor: pointer;
+      &:hover,
+      &.active {
+        background-color: $chooser-dropdown-item-hover-bg;
+      }
+    }
+  }
+}
+

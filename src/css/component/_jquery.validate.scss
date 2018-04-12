@@ -1,0 +1,17 @@
+input.validate-error,
+textarea.validate-error,
+select.validate-error,
+div.validate-error,
+.select-control.validate-error,
+.form-control.validate-error {
+  border-color: #a94442 !important;
+  &:focus {
+    border-color: #843534 !important;
+  }
+}
+
+p.validate-error {
+  display: block;
+  font-size: 13px;
+  color: #a94442;
+}

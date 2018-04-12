@@ -1,0 +1,96 @@
+//
+// switch
+//----------------------------------------
+$switch-track-bg-color:#ff5000 !default;
+.round-switch {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+
+  .toggle {
+    margin-left: -9999px;
+    width: 0;
+    height: 0;
+    position: absolute;
+    visibility: hidden;
+    &:checked {
+      &+label {
+        background-color: $switch-track-bg-color;
+        &:before {
+          margin-left: 28px;
+        }
+        &:after {
+          background-color: $switch-track-bg-color;
+        }
+      }
+    }
+    &+label {
+      cursor: pointer;
+      display: block;
+      background-color: #DDD;
+      &:before,
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 1px;
+        left: 1px;
+      }
+      &:before {
+        background-color: $bg1;
+        z-index: 1;
+        border-radius: 50%;
+        @include transition(margin-left 0.5s);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      }
+      &:after {
+        right: 1px;
+        bottom: 1px;
+        background-color: #f1f1f1;
+        @include transition(background-color 0.5s);
+      }
+    }
+  }
+}
+
+
+/*checked*/
+
+.round-switch.small .toggle+label {
+  width: 40px;
+  height: 24px;
+  border-radius: 24px;
+}
+
+.round-switch.small .toggle+label:before {
+  height: 22px;
+  width: 22px;
+}
+
+.round-switch.small .toggle+label:after {
+  border-radius: 24px;
+}
+
+.round-switch.small .toggle:checked + label:before {
+  margin-left: 16px;
+}
+
+.round-switch {
+  &.disabled {
+    cursor: not-allowed;
+    .toggle {
+      &+label {
+        cursor: not-allowed;
+        background-color: lighten($switch-track-bg-color, 20%);
+        &:before {
+          box-shadow: none;
+          background-color: #f0f0f0;
+        }
+        &:after {
+          background-color: lighten($switch-track-bg-color, 20%);
+        }
+      }
+    }
+  }
+}

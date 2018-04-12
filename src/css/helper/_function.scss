@@ -1,0 +1,169 @@
+@import "../vendor/bourbon/bourbon";
+@import "./mixin";
+.f-fl {
+  float: left;
+}
+
+.f-fr {
+  float: right;
+}
+
+.f-clb:before,
+.f-clb:after {
+  content: " ";
+  display: table;
+}
+
+.f-clb:after {
+  clear: both;
+}
+
+.f-pointer {
+  cursor: pointer;
+}
+
+.f-tr,
+.text-right {
+  text-align: right;
+}
+
+.f-tl,
+.text-left {
+  text-align: left;
+}
+
+.f-tc,
+.text-center {
+  text-align: center;
+}
+
+.block-center,
+.center-block {
+  display: block;
+  margin: 0 auto;
+}
+
+.no-resize {
+  resize: none;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.f-inline-block {
+  display: inline-block;
+}
+
+.f-block {
+  display: block;
+}
+// 关闭按钮
+// <button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
+.btn-close {
+  float: right;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  /*filter: alpha(opacity=20);
+    opacity: .2;  commented by Tobias, close is a class that was used for icons. in commentpanel the icon was almost not to see*/
+  &:focus,
+  &:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    /* filter: alpha(opacity=50);
+        opacity: .5 */
+  }
+}
+
+button.btn-close {
+  -webkit-appearance: none;
+  padding: 0;
+  cursor: pointer;
+  background: 0 0;
+  border: 0
+}
+
+.text-hide {
+  @include text-cut-dot();
+}
+
+.no-margin-collapsing-top {
+  @include no-margin-collapsing-top();
+}
+
+.no-margin-collapsing-bottom {
+  @include no-margin-collapsing-bottom();
+}
+
+.f-hide {
+  display: none !important;
+}
+
+.f-show {
+  display: block;
+}
+
+.un-clickable {
+  pointer-events: none;
+  cursor: default;
+}
+
+.f-arrow {
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    height: 2px;
+    margin-top: -2px;
+    display: block;
+    border: 4px solid transparent;
+    border-top-color: black;
+  }
+}
+
+.with-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%, -50%));
+}
+
+.f-full-pos {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.f-emph {
+  font-weight: bold;
+  color: black;
+}
+
+.f-justify-align {
+  display: flex;
+  justify-content: space-between;
+}
+
+.no-user-select{
+  @include user-select(none);
+}
+
+.p-re{
+  position: relative;
+}
+
+.f-none{
+  display: none;
+}

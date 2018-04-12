@@ -1,0 +1,97 @@
+.select-control {
+  position: relative;
+  cursor: pointer;
+  vertical-align: middle;
+  display: inline-block;
+  width: 100%;
+  select {
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    top: 0;
+    line-height: 0;
+  }
+  &.opened {
+    .select-opt-list {
+      display: block;
+    }
+    .arrow {
+      // @include transform(rotateX(180deg));
+    }
+  }
+  &[disabled],
+  &.disabled {
+    cursor: not-allowed;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -moz-user-select: none;
+    .selected-opt-value {
+      color: #aeaeae;
+    }
+  }
+  .selected-opt-value,
+  .select-opt-list > li {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .cur-selected-opt {
+    display: block;
+    width: 100%;
+    // height: 100%;
+    padding-right: 18px;
+    .selected-opt-value {
+      display: block;
+    }
+  }
+  .select-opt-list {
+    position: absolute;
+    z-index: 2;
+    display: none;
+    left: -1px;
+    right: 0;
+    top: 100%;
+    max-height: 280px;
+    margin-top: 1px;
+    min-width: 240px;
+    background-color: white;
+    overflow-y: auto;
+    @include with-shadow();
+    >li {
+      padding: 8px 10px;
+      cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+    >li.selected {
+      background-color: #f0f0f0;
+    }
+    >li.disabled.selected {
+      background-color: transparent;
+    }
+    >li.disabled {
+      cursor: default;
+      color: #aeaeae;
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+  .arrow {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    pointer-events: none;
+    margin-top: -2px;
+  }
+}

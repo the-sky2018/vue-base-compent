@@ -1,0 +1,76 @@
+.entbc-create-win {
+
+  .file-info-block {
+    padding: 10px 0;
+    .file {
+      @include calc(width, "100% - 80px");
+    }
+    // .participant {
+    //   margin-left: 40px;
+    // }
+  }
+  .content-block,
+  .button-block {
+    .right {
+      @include calc(width, "100% - 80px");
+    }
+  }
+  .user-block .tips {
+    line-height: $line-height;
+  }
+  .content-block {
+    .right {
+      position: relative;
+      .tontent-tip {
+        position: absolute;
+        right: 6px;
+        top: -22px;
+        padding-right: 6px;
+      }
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      border: solid 1px $border-color;
+      line-height: 20px;
+      outline: none;
+      padding: 10px 6px;
+    }
+  }
+  .bc-tg-block {
+    .bc-tg-input {
+      width: 100%;
+      padding: 0px;
+      border: 0px;
+      height: auto;
+      .user-name {
+        background-color: $baseGray05;
+        padding: 2px;
+        margin-right: 6px;
+        position: relative;
+        top: 5px;
+      }
+      .choose-contain {
+        width: 100%;
+        .ep-share {
+          background-color: white;
+        }
+      }
+    }
+  }
+  .button-block {
+    position: relative;
+    height: 30px;
+    margin-bottom: 0px;
+    .publish-bc {
+      position: absolute;
+      right: 0px;
+    }
+  }
+  .tip-word {
+    color: #aaaaaa;
+  }
+  .button-block {
+    margin-top: 30px;
+  }
+}

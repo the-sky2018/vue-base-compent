@@ -1,0 +1,221 @@
+//
+// Created by manjun.han
+// 2015.11.12
+//
+//
+// Button
+//-------------------------------------
+$button-default-color: #333 !default;
+$button-default-border-color: #D1D1D1 !default;
+$button-default-bg-color: #E6E6E6 !default;
+$button-done-color: white !default;
+$button-done-border-color: #2b7bea !default;
+$button-done-bg-color: #2b7bea !default;
+$button-danger-color: white !default;
+$button-danger-border-color: #d9534f !default;
+$button-danger-bg-color: #d9534f !default;
+$button-default-font-size: 14px !default;
+$button-default-padding-vertical: 4px !default;
+$button-default-padding-horizontal: 10px !default;
+$button-default-line-height: 1.42857134 !default;
+$button-default-border-radius: 2px !default;
+$button-sm-font-size: 12px !default;
+$button-sm-padding-vertical: 3px !default;
+$button-sm-padding-horizontal: 6px !default;
+$button-sm-line-height: 1.42857134 !default;
+$button-sm-border-radius: 2px !default;
+$button-lg-font-size: 18px !default;
+$button-lg-padding-vertical: 10px !default;
+$button-lg-padding-horizontal: 18px !default;
+$button-lg-line-height: 1.3333 !default;
+$button-lg-border-radius: 2px !default;
+$plain-text-button-color: #333 !default;
+$plain-text-done-button-color: #2b7bea!default;
+$plain-text-danger-button-color: #d9534f!default;
+$button-transiton-during: 0.3s !default;
+@mixin button-variant($color, $background, $border) {
+  outline: none;
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+  &:focus,
+  &.focus,
+  &:hover,
+  &.active {
+    color: $color;
+    background-color: darken($background, 10%);
+    border-color: darken($border, 10%);
+    text-decoration: none;
+  }
+  &:active {
+    outline: none;
+  }
+  &.active {
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $color;
+      background-color: darken($background, 10%);
+      border-color: darken($border, 10%);
+      text-decoration: none;
+    }
+  }
+  &.disabled,
+  &[disabled] {
+    &,
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      background-color: lighten($background, 15%);
+      border-color: lighten($border, 10%);
+      text-decoration: none;
+      color: lighten($color, 20%);
+    }
+  }
+}
+
+@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius) {
+  padding: $padding-vertical $padding-horizontal;
+  font-size: $font-size;
+  line-height: $line-height;
+  border-radius: $border-radius;
+}
+
+.button {
+  display: inline-block;
+  white-space: nowrap;
+  margin-bottom: 0; // For input.btn
+  text-align: center;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid #ccc;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+  @include button-variant($button-default-color, transparent, $button-default-border-color);
+  @include button-size($button-default-padding-vertical, $button-default-padding-horizontal, $button-default-font-size, $button-default-line-height, $button-default-border-radius);
+  @include transition(all $button-transiton-during ease-in-out);
+  //
+  // button size
+  //------------------------------
+  &.small {
+    @include button-size( $button-sm-padding-vertical, $button-sm-padding-horizontal, $button-sm-font-size, $button-sm-line-height, $button-sm-border-radius);
+  }
+  &.middle {
+    @include button-size($button-default-padding-vertical, $button-default-padding-horizontal, $button-default-font-size, $button-default-line-height, $button-default-border-radius);
+  }
+  &.large {
+    @include button-size($button-lg-padding-vertical, $button-lg-padding-horizontal, $button-lg-font-size, $button-lg-line-height, $button-lg-border-radius);
+  }
+}
+
+.button.disabled,
+.button[disabled] {
+  cursor: not-allowed;
+}
+
+.button.nob {
+  border: none !important;
+}
+
+// button with bg color
+.button.default {
+  @include button-variant($button-default-color, $button-default-bg-color, $button-default-border-color);
+}
+
+.button.done {
+  @include button-variant($button-done-color, $button-done-bg-color, $button-done-border-color);
+}
+
+.button.danger {
+  @include button-variant($button-danger-color, $button-danger-bg-color, $button-danger-border-color);
+}
+.button.pass {
+  @include button-variant($button-danger-color, $pass-bg-color, rgba(0,0,0,0));
+}
+.button.reject {
+  @include button-variant($button-danger-color, $reject-bg-color,  rgba(0,0,0,0));
+}
+
+//
+// plain text button
+//------------------------------
+//
+@mixin text-button-variant($color) {
+  color: $color;
+  &:hover,
+  &.hover {
+    color: $color;
+    text-decoration: underline;
+  }
+  &[disabled],
+  &.disabled {
+    cursor: not-allowed;
+    text-decoration: none;
+    color: lighten($color, 50%) !important;
+  }
+}
+
+.text-button,
+.link-button {
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  @include text-button-variant($plain-text-button-color);
+  &.done {
+    @include text-button-variant($plain-text-done-button-color);
+  }
+  &.danger {
+    @include text-button-variant($plain-text-done-button-color);
+  }
+}
+
+//
+// inline button
+//------------------------------
+.button {
+  &.button-inline{
+    display: inline-block;
+  }
+}
+
+.button.button-inline + .button.button-inline {
+  margin-left: 5px;
+}
+
+//
+// block button
+//------------------------------
+.button{
+  .button-block {
+    display: block;
+    width: 100%;
+  }
+}
+
+.button.button-block + .button.button-block {
+  margin-top: 5px;
+}
+
+.button-group {
+  vertical-align: middle;
+  white-space:nowrap;
+  .button {
+    float: left;
+    margin-left: 10px;
+    &:first-child {
+      margin-left: 0px;
+    }
+  }
+}
+
+.blue-text-btn {
+  color: $blueColor15;
+  cursor: pointer;
+
+  &:hover{
+    text-decoration:underline;
+  }
+}

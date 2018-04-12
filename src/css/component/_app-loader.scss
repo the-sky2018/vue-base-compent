@@ -1,0 +1,15 @@
+//
+// depend on _spinner.scss
+//
+.app-loader{
+  position: absolute;
+  @include set-position(0,0,0,0);
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(center);
+  background-color: white;
+  .spinner-loader{
+    height: auto;
+  }
+
+}

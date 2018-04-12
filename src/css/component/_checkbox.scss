@@ -1,0 +1,35 @@
+.m-chb {
+  cursor: pointer;
+  .box {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: middle;
+    pointer-events: none;
+    border: 1px solid #D1D1D1;
+    margin-right: 6px;
+  }
+  .label {
+    @include user-select(none);
+    vertical-align: middle;
+  }
+  &.checked {
+    .box {
+      &:before {
+        content: "";
+        width: 16px;
+        height: 16px;
+        background-position: -7px -396px;
+        background-image: $icon-file-path;
+        background-size: $icon-file-size;
+        background-repeat: no-repeat;
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+  }
+  &.is-inline {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

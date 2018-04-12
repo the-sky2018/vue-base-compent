@@ -1,0 +1,17 @@
+$box-shadow: 0 5px 10px rgba(0, 0, 0, 0.16),
+0 5px 28px rgba(0, 0, 0, 0.1) !default;
+.with-shadow {
+  @include box-shadow($box-shadow);
+}
+
+@mixin with-shadow {
+  @include box-shadow($box-shadow);
+}
+
+.with-no-shadow {
+  @include box-shadow(none);
+}
+@mixin with-no-shadow {
+  @include box-shadow(none);
+}
+

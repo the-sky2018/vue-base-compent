@@ -1,0 +1,135 @@
+//
+// Window
+// @depend vendor/animation
+//-------------------------------------
+$use-fadeIn: true;
+$use-bounce: true;
+$use-fadeIn: true;
+$use-fadeOut: true;
+$use-fadeInDown: true;
+$use-fadeOutUp: true;
+$win-header-height:48px !default;
+$win-border-color:#ccc !default;
+$win-title-font-size:16px !default;
+$win-top:1% !default;
+$win-overlayer-bg-color:black !default;
+$win-overlayer-bg-opacity:0.6 !default;
+$win-dropshadow-color:rgba(0, 0, 0, .2) !default;
+$win-animation-during:0.2s !default;
+$win-body-bg-color:white !default;
+$win-header-bg-color:white !default;
+$phone: 200px;
+.g-window {
+  position: fixed;
+  overflow-y: auto;
+  z-index: 10001;
+  @include set-position(0, 0, 0, 0);
+}
+
+.m-window {
+  position: absolute;
+  left: 50%;
+  border: 1px solid #e3e3e3;
+  z-index: 10001;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background-color: $win-body-bg-color;
+  outline: none;
+  // @include transform(translate3d(0,-100px,0));
+  // @include transition(transform $win-animation-during  ease-in-out ,
+  //                     opacity $win-animation-during   ease-in-out ,
+  //                     box-shadow $win-animation-during   ease-in-out );
+  @include box-shadow(0 2px 12px $win-dropshadow-color, 0 0 50px $win-dropshadow-color);
+  &.without-padding{
+    >section{
+      padding:0;
+    }
+  }
+  >header,
+  >section,
+  >footer {
+    position: relative;
+  }
+  >header {
+    padding-right: 44px;
+    padding-left: 10px;
+    z-index: 2;
+    cursor: move;
+    background-color: $win-header-bg-color;
+    height: $win-header-height;
+    line-height: $win-header-height;
+    border-bottom: 1px solid $win-border-color;
+    @include user-select(none);
+    .closeBtn {
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      margin-top: -15px;
+      cursor: pointer;
+    }
+    .title {
+      text-align: center;
+      text-indent: 11px;
+      cursor: move;
+      display: block;
+      font-size: $win-title-font-size;
+      @include text-cut-dot();
+    }
+    @media all and(max-width: $phone) {
+      height: 44px;
+      line-height: 44px;
+    }
+  }
+  >section {
+    padding: 15px;
+    word-wrap: break-word;
+    word-break: break-all;
+    @media all and(max-width: $phone) {
+      padding: 15px 10px;
+    }
+    .tooltips {
+      color: #6c80ef;
+    }
+    &.with-clip {
+      overflow: hidden;
+      ;
+    }
+  }
+  >footer {
+    margin-bottom: 15px;
+    padding: 0px 15px;
+    .button {
+      margin-left: 6px;
+    }
+    @media all and(max-width: $phone) {
+      padding: 0 10px;
+      margin-bottom: 10px;
+    }
+    &.text-center {
+      text-align: center;
+    }
+    &.text-left {
+      text-align: left;
+    }
+    &.text-right {
+      text-align: right;
+    }
+  }
+}
+
+.m-window.show {
+  opacity: 1;
+  @include md-transform(0, 0, 0);
+  @include box-shadow(0 2px 12px $win-dropshadow-color, 0 0 50px $win-dropshadow-color);
+}
+
+.m-window-overlayer {
+  position: fixed;
+  background-color: rgba($win-overlayer-bg-color, .4);
+  z-index: 10000;
+  @include set-position(0, 0, 0, 0);
+}
+

@@ -1,0 +1,38 @@
+.piechart {
+  line-height: 24px;
+  @extend .flex-container;
+  .contain-piechart {
+    width: 400px;
+    display: inline-block;
+    .f-w {
+      font-weight: bold;
+    }
+    .f-color {
+      color: #2b7bea;
+    }
+  }
+  .sign {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .des {
+    display: inline-block;
+    margin-right: 6px;
+  }
+  .dep {
+    display: inline-block;
+    margin-right: 6px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 200px;
+    vertical-align: middle;
+  }
+  button {
+    color: #2b7bea;
+  }
+}

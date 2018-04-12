@@ -1,0 +1,47 @@
+//
+// m-snackbars
+//--------------------------
+@import "../helper/breakpoint";
+$snackbar-color:white !default;
+$snackbar-bg:black !default;
+.m-snackbar {
+  padding-right: 40px;
+  border-radius: 2px;
+  padding: 10px;
+  min-width: 160px;
+  max-width: 568px;
+  position: fixed;
+  z-index: 10;
+  opacity: 0;
+  vertical-align: middle;
+  background-color: $snackbar-bg;
+  color: $snackbar-color;
+  @include transition(all .4s cubic-bezier(0.23, 1, 0.32, 1));
+  .msg {
+    display: inline-block;
+    word-break: break-all;
+  }
+  .roll-back {
+    display: inline-block;
+    margin-left: 30px;
+    text-shadow: 2px 2px 10px white;
+    cursor: pointer;
+  }
+  .closeBtn {
+    position: absolute;
+    top: 18px;
+    margin-top: -13px;
+    right: 5px;
+  }
+  a {
+    color: white;
+    text-decoration: underline;
+  }
+  @media all and (min-width: $phone) {
+    padding: 15px 60px 15px 15px;
+    .closeBtn {
+      top: 24px;
+      margin-top: -15px;
+    }
+  }
+}

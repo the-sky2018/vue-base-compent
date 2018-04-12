@@ -1,21 +1,29 @@
 <template>
+  
   <div class="hello">
-    <moveBox></moveBox>
+    <div @click="show=!show">click me</div>
+    <div v-if="show">
+      <window></window>  
+    </div>
+    
+    <!-- <window></window> -->
   </div>
 </template>
 
 <script>
 
 import moveBox from './move-box/moveBxo';
+import window from './window'
 export default {
 
   name: 'HelloWorld',
   components: {
-    moveBox
+    window
   },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      show:true
     }
   }
 }

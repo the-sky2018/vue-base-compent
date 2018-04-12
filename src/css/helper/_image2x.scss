@@ -1,0 +1,16 @@
+@mixin image2x($image, $width, $height) {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url($image);
+    background-size: $width $height;
+  }
+}
+@mixin image2x-type($image, $type , $position) {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+    background-image: url($image);
+    background-size: $type;
+    @if $position{
+      background-position: $position;
+    }
+  }
+}

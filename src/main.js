@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import jquery from 'jquery'
+// require("./css/style.scss")
+// import underscore from 'underscore'
+// require("expose-loader?_!underscore");
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

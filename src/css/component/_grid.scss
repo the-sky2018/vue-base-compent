@@ -1,0 +1,111 @@
+@import "../vendor/bourbon/bourbon";
+//
+// @see https://github.com/jeroenoomsNL/the-flex-grid
+// @see http://flexboxgrid.com/
+//
+//
+$grid-col-gutter: 10px;
+$grid-col-count: 12 !default;
+$grid-container-width: 960px;
+@mixin clb() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.container,
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: floor(($grid-col-gutter / 2));
+  padding-right: ceil(($grid-col-gutter / 2));
+  @include clb();
+
+}
+
+.container {
+  max-width: $grid-container-width;
+
+}
+
+
+.flex-row {
+  @include display(flex);
+  // @include flex-wrap(wrap);
+  @include flex-direction(row);
+  margin-left: ceil(($grid-col-gutter / -2));
+  margin-right: floor(($grid-col-gutter / -2));
+  &.start {
+    @include justify-content(flex-start);
+  }
+  &.center {
+    @include justify-content(center);
+  }
+  &.end {
+    @include justify-content(flex-end);
+  }
+  &.around {
+    @include justify-content(space-around);
+  }
+  &.between {
+    @include justify-content(space-between);
+  }
+  &.top {
+    @include align-items(flex-start);
+  }
+  &.bottom {
+    @include align-items(flex-end);
+  }
+  &.middle {
+    @include align-items(center);
+  }
+  &.stretch {
+    @include align-items(stretch);
+  }
+  .col-auto {
+    @include flex(1 1 0);
+  }
+  @for $index from 0 to $grid-col-count {
+    $index: $index + 1;
+    .col-#{$index} {
+      @include flex-basis(percentage(1 / 12 * ($index)));
+    }
+  }
+  @for $index from 0 to $grid-col-count {
+    $index: $index + 1;
+    .col-offset-#{$index} {
+      margin-left: percentage($index / $grid-col-count);
+    }
+  }
+}
+
+.row {
+  position: relative;
+  margin-left: ceil(($grid-col-gutter / -2));
+  margin-right: floor(($grid-col-gutter / -2));
+  @include clb();
+  [class*=col-] {
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-left: ($grid-col-gutter / 2);
+    padding-right: ($grid-col-gutter / 2);
+  }
+  @for $index from 0 to $grid-col-count {
+    $index: $index + 1;
+    .col-#{$index} {
+      width: percentage(1 / 12 * $index);
+    }
+  }
+  @for $index from 0 to $grid-col-count {
+    $index: $index + 1;
+    .col-offset-#{$index} {
+      left: percentage($index / $grid-col-count);
+    }
+  }
+}

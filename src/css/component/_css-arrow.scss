@@ -1,0 +1,24 @@
+
+$arrow-size: 5px !default;
+$arrow-color: #494949 !default;
+
+.arrow {
+    display: inline-block;
+    vertical-align: middle;
+    border: $arrow-size solid transparent;
+    color: $arrow-color;
+    width: 0px;
+    height: 0px;
+}
+.arrow.down{
+    border-top-color: $arrow-color;
+}
+.arrow.top{
+    border-bottom-color: $arrow-color;
+}
+.arrow.left{
+    border-right-color: $arrow-color;
+}
+.arrow.right{
+    border-left-color: $arrow-color;
+}

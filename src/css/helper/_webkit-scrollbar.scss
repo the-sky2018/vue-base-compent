@@ -1,0 +1,38 @@
+$track-width:8px !default;
+$track-bg-color: #F1f1f1 !default;
+$thumb-bg-color: #C2C2C2 !default;
+$thumb-border-radius:0px !default;
+$corner-bg-color:  #F1f1f1 !default;
+
+::-webkit-scrollbar{
+    width:$track-width;
+    height:$track-width;
+}
+
+// track
+::-webkit-scrollbar-track{
+    background-color: $track-bg-color;
+}
+
+::-webkit-scrollbar-track-piece{
+
+}
+
+// thumb
+::-webkit-scrollbar-thumb{
+
+    background-color: $thumb-bg-color;
+    border-radius:$thumb-border-radius;
+
+    &:hover{
+        background-color: darken( $thumb-bg-color , 10%);
+    }
+}
+// corner
+::-webkit-scrollbar-corner{
+    background-color: $corner-bg-color;
+}
+
+::-webkit-resizer{
+
+}

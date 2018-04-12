@@ -1,0 +1,23 @@
+
+$flash-alert-height: 36px !default;
+$flash-alert-padding-left: 10px;
+$flash-alert-padding-right: 30px;
+
+.flash-alert{
+
+  position: relative;
+  height: $flash-alert-height ;
+  line-height: $flash-alert-height ;
+  padding-left: $flash-alert-padding-left ;
+  padding-right: $flash-alert-padding-right ;
+  background-color: white ;
+
+  .flash-alert-close-btn{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    margin-top: -15px;
+  }
+}

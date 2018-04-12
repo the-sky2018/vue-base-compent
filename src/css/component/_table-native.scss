@@ -1,0 +1,71 @@
+$table-background-color: white !default;
+$table-border-color: #ccc !default;
+$table-hd-bg: #f0f0f0 !default;
+$table-cell-padding: 5px !default;
+$table-striped-bg-color: #f0f0f0 !default;
+$table-hovered-bg-color: #f0f0f0 !default;
+$table-header-bg: #f0f0f0 !default;
+table {
+  background-color: $table-background-color;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+}
+
+//
+// 基本样式
+//-----------------------------
+.table {
+  width: 100%;
+  max-width: 100%;
+  th,
+  td {
+    vertical-align: top;
+    padding: $table-cell-padding;
+  }
+  &.with-align-center{
+    td,th{
+      text-align: center;
+    }
+  }
+  .with-layout-fixed{
+    table-layout: fixed;
+  }
+}
+
+//
+// 添加border
+//-----------------------------
+.table-bordered {
+  border: 1px solid $table-border-color;
+  th,
+  td {
+    border: 1px solid $border-color;
+  }
+}
+
+.table-striped {
+  >tbody {
+    tr:nth-of-type(odd) {
+      background-color: $table-striped-bg-color;
+    }
+  }
+}
+
+.table-hoverd {
+  > tbody {
+    tr:hover {
+      background-color: $table-hovered-bg-color;
+    }
+  }
+}
+
+.table-block-hd {
+  >thead {
+    background-color: $table-header-bg;
+  }
+}
+

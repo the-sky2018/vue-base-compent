@@ -1,0 +1,47 @@
+//
+// message box
+//--------------------------------
+$success-text-color:#3c763d !default;
+$error-text-color:#a94442 !default;
+$info-text-color:#0BA9D8 !default;
+.m-msgbox {
+  padding: 8px 40px 8px 20px;
+  display: inline-block;
+  position: relative;
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  white-space: nowrap; // 禁用换行
+  color: #31708f;
+  background-color: #d9edf7;
+  @include transform(translate3d(-50%, -100%, 0));
+  @include transition(all $normal-time linear);
+  .message-content {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  button.btn-close {
+    position: absolute;
+    right: 10px;
+    color: inherit;
+    line-height: 1;
+    font-weight: normal;
+  }
+  &.show {
+    @include transform(translate3d(-50%, 0, 0));
+  }
+  &.success {
+    color: $success-text-color;
+    background-color: #dff0d8;
+  }
+  &.error {
+    color: $error-text-color;
+    background-color: #f2dede;
+  }
+  &.infor {
+    color: #31708f;
+    background-color: #d9edf7;
+  }
+}
+

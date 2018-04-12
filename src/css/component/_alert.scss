@@ -1,0 +1,122 @@
+//
+// extend window.scss
+//
+//--------------------------------------------
+.g-alert {
+  @extend .g-window;
+}
+
+.m-alert {
+  @extend .m-window;
+  >footer {
+    text-align: right;
+    padding: 0 20px;
+    &.start button{
+        margin-right: 6px;
+    }
+    &.end button{
+        margin-left: 6px;
+    }
+  }
+  >section {
+    padding: 20px;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  a {
+    font-size: 12px;
+    color: blue;
+    text-decoration: underline;
+    margin-left: 30px;
+    text-align: right;
+  }
+}
+
+.m-alert-overlayer,
+{
+  @extend .m-window-overlayer;
+}
+
+.g-conersion-overlayer {
+  position: fixed;
+  background-color: black;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.g-convertion {
+  display: none;
+  position: fixed;
+  overflow-y: auto;
+  z-index: 10001;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  .m-convertion {
+    position: absolute;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    background-color: white;
+    header {
+      padding: 0 10px;
+      background-color: white;
+      height: 56px;
+      line-height: 56px;
+      border-bottom: 1px solid #e0e0e0;
+      -webkit-user-select: none;
+      .title {
+        text-align: center;
+        text-indent: 11px;
+        display: block;
+        padding-right: 40px;
+        font-size: 18px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .closeBtn {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 10px;
+        top: 10px
+      }
+    }
+    section {
+      position: relative;
+      padding: 15px 20px 15px;
+      word-wrap: break-word;
+      word-break: break-all;
+      display: block;
+      .processProg {}
+      .error-msg {
+        position: relative;
+        color: red;
+        font-size: 12px;
+        text-align: center;
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+      }
+    }
+    footer {
+      position: relative;
+      text-align: center;
+      margin-bottom: 15px;
+      padding: 0px 20px;
+    }
+  }
+}
+
+.show-dg {
+  display: block;
+}

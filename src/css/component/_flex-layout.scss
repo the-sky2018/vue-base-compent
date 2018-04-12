@@ -1,0 +1,6 @@
+.flex-container{
+  @include display(flex);
+  @include flex-wrap(wrap);
+  @include flex-direction(row);
+  @include align-items(center);
+}

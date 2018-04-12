@@ -1,0 +1,40 @@
+//
+// 用来展示某块区域内的详细信息条目，布局模式类似于_block.scss。但代表意义不同
+// 展示内容的具体程度属于更细的范围。
+//
+.detail-list {
+  //
+  // 详情列表项
+  //
+  .detail-list-item {
+    position: relative;
+    @include display(flex);
+    &.with-vertical {
+      @include flex-direction(colum);
+    }
+    &.with-horizontal {
+      @include flex-direction(row);
+    }
+    &.with-nowrap {
+      @include flex-wrap(nowrap);
+    }
+  }
+  //
+  // 详情标签
+  //
+  .detail-list-item-aside {
+    // 需要固定宽度
+    // 不参与缩放
+    @include flex(0 0 auto);
+  }
+  //
+  // 详情内容
+  //
+  .detail-list-item-main {
+    //
+    // 自适应
+    //
+    @include flex(1 1 auto);
+  }
+}
+

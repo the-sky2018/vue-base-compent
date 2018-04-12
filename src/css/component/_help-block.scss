@@ -1,0 +1,36 @@
+//
+// help-block
+//-------------------------------------
+.help-block,
+.help-inline {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: #737373;
+  font-size: 13px;
+  .emph {
+    color: black;
+    font-weight: bold;
+  }
+}
+
+.help-block.emphasize,
+.help-inline.emphasize {
+  font-weight: 600;
+  color: black;
+}
+
+.helper-block {
+  display: block;
+}
+.help-inline{
+  display: inline-block;
+}
+.help-block.small,
+.help-inline.small {
+  font-size: 12px;
+}
+
+.help-block.normal,
+.help-inline.normal {
+  font-size: 13px;
+}

@@ -1,0 +1,58 @@
+$block-margin-bottom:10px !default;
+$block-hd-margin-bottom:10px !default;
+$block-title-font-size:inherit !default;
+$block-header-horizonal-width:160px !default;
+//
+// 块区模式,分为横向和纵向布局，主要用来呈现页面上大块信息段的区分
+//
+// ---------------------------------- <------- block-hd
+// | title                          | <------- block-title
+// ----------------------------------
+// |                                |
+// | content                        |
+// |                                | <------- block-bd
+// ----------------------------------
+//
+//  block-hd
+// ------------------------------------
+// | title    |                       |
+// ------------                       |
+//            |         content       |
+//            |                       |
+//            |------------------------ <------- block-bd
+//
+//
+.block {
+  margin-bottom: $block-margin-bottom;
+  position: relative;
+  @include clearfix();
+  // header
+  .block-hd {
+    position: relative;
+    margin-bottom: $block-hd-margin-bottom;
+    @include clearfix();
+    .block-title {
+      font-size: $block-title-font-size;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  // body
+  .block-bd {
+    position: relative;
+  }
+  //
+  // 左右模式
+  //
+  &.horizonal {
+    @include clearfix();
+    .block-hd {
+      float: left;
+      width: $block-header-horizonal-width;
+    }
+    .block-bd {
+      margin-left: $block-header-horizonal-width;
+    }
+  }
+}
+

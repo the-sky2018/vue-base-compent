@@ -1,0 +1,28 @@
+//
+// Auto Completion panel
+//---------------------------------------------------
+
+.auto-complete-panel {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ddd;
+    background-color: #FDFDFD;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    z-index: 1;
+    @include box-shadow( 0px 7px 35px rgba(0, 0, 0, 0.12));
+    .auto-complete-list{
+        position: relative;
+        padding:0;
+        list-style: none;
+        max-height:400px;
+        overflow-y: auto;
+    }
+    &.autoScroll{
+        overflow-y: auto;
+        background-color: #FDFDFD;
+        .auto-complete-list > *{
+            position: relative;
+        }
+    }
+}

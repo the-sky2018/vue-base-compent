@@ -1,0 +1,117 @@
+$datepicker-border-color: #2b7bea !default;
+.ui-datepicker {
+
+  display: none;
+  background-color: white;
+  padding: 14px 20px;
+  z-index: 999999 !important;
+  @include with-shadow();
+  .ui-datepicker-inline {
+    padding: 30px;
+  }
+  .ui-datepicker-header {
+    text-align: center;
+    padding-bottom: 1em;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    .ui-datepicker-prev,
+    .ui-datepicker-next {
+      display: inline;
+      float: left;
+      cursor: pointer;
+      padding: 0 10px;
+    }
+    .ui-datepicker-next {
+      float: right;
+    }
+  }
+  .ui-datepicker-calendar {
+    width: 100%;
+    text-align: center;
+    thead {
+      tr {
+        th {
+          color: #8f8f8f;
+        }
+      }
+    }
+    tr {
+      th,
+      td {
+        padding-bottom: 2px;
+        text-align: center;
+      }
+    }
+    .ui-datepicker-today {
+      a {
+        border-color: #f8f8f8;
+        background-color: #e8e8e8;
+        color: #444;
+      }
+    }
+    .ui-datepicker-current-day {
+      a {
+        border-color: $datepicker-border-color ;
+        background-color: $datepicker-border-color ;
+        color: white;
+      }
+    }
+    .ui-state-disabled >span {
+      display: block;
+      margin: 0 auto;
+      width: 35px;
+      height: 34px;
+      line-height: 34px;
+      color: #ccc;
+    }
+    a {
+      color: #444;
+      text-decoration: none;
+      display: block;
+      margin: 0 auto;
+      width: 35px;
+      height: 34px;
+      line-height: 34px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      border-radius: 3px;
+      &:hover {
+        border-color: $datepicker-border-color ;
+        background-color: $datepicker-border-color ;
+        color: white;
+      }
+    }
+    .ui-state-highlight {
+      border-color: #D24D57;
+      color: #D24D57;
+    }
+  }
+  .ui-datepicker-buttonpane {
+    padding: 5px 8px;
+    .ui-datepicker-close {
+      float: right;
+    }
+  }
+}
+
+&.datepicker {
+  @extend .form-control;
+  padding: 0;
+  input {
+    @extend .form-control;
+    width: 100%;
+    display: block;
+  }
+  border:none;
+  padding: 0;
+  .ep-ic-date {
+    pointer-events: none;
+    position: absolute;
+    right: 4px;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 24px;
+  }
+}

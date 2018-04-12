@@ -1,0 +1,48 @@
+.m-nav-window {
+  &.disable-tran {
+    .window-body {
+      @include transition-duration(0s);
+    }
+  }
+  .window-header {
+    padding-left: 44px;
+  }
+  .window-body {
+    @include transition(height .3s);
+  }
+  .u-nav-back-btn {
+    position: absolute;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    z-index: 2;
+    left: 6px;
+    top: 50%;
+    background-position: 0px -210px;
+    @include transform(translateY(-50%));
+    background-image: $icon-file-path;
+    background-size: $icon-file-size;
+    background-repeat: no-repeat;
+    &:before{
+      content: "";
+      display: none;
+    }
+  }
+  .m-navigation .nav-windownavpage-container {
+    overflow-y: hidden;
+  }
+  .m-navigation {
+    .nav-page {
+      padding-top: 0;
+      overflow: hidden;
+      .page-content {
+        height: auto
+      }
+    }
+    .page-transitioning {
+      @include animation-duration(.3s);
+      box-shadow: none;
+    }
+  }
+}
+

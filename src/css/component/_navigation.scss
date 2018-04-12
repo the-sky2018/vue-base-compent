@@ -1,0 +1,143 @@
+
+$navigation-bar-height: 51px;
+$navigation-bar-border-color: #e0e0e0 !default;
+.m-navigation{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  .navpage-container{
+    overflow: hidden;
+  }
+
+  .m-navigationbar{
+    position: relative;
+    top:0;
+    height: $navigation-bar-height;
+    line-height: $navigation-bar-height - 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: 1px solid $navigation-bar-border-color;
+    background-color: white;
+    z-index: 1;
+    @include transition(top .3s);
+    .title{
+      position: absolute;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 16px;
+      z-index: 0;
+    }
+    .nav-back{
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+    }
+
+  }
+  .nav-page{
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-top: $navigation-bar-height;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    overflow-y: auto;
+    .page-content{
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      .head-block {
+        margin-bottom: 10px;
+      }
+
+      .title{
+        margin: 0px 0px 0px 0px;
+      }
+    }
+    &.no-navbar{
+      padding-top: 0;
+    }
+  }
+  .navpage-container{
+    position: absolute;
+    top: 0;
+    left: 0 ;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+  }
+  &.no-navbar{
+    .m-navigationbar{
+      top: -$navigation-bar-height;
+    }
+  }
+
+  .page-from-left-to-center{
+    @include animation(fromLeftToCenter cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards)
+  }
+
+  .page-from-center-to-left{
+    @include animation(fromCenterToLeft cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards)
+  }
+
+  .page-from-right-to-center{
+    @include animation(fromRightToCenter cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards)
+  }
+
+  .page-from-center-to-right{
+    @include animation(fromCenterToRight cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards)
+  }
+
+  .page-transitioning{
+    @include animation-duration(.3s);
+    box-shadow: 0 -10px 10px #aaa;
+  }
+
+
+}
+
+@include keyframes(fromLeftToCenter){
+  from{
+    @include transform(translate3d( -20%,0,0));
+  }
+  to{
+    @include transform(translate3d( 0%,0,0));
+  }
+}
+
+@include keyframes(fromCenterToLeft){
+  from{
+    @include transform(translate3d( 0,0,0));
+  }
+  to{
+    @include transform(translate3d( -20%,0,0));
+  }
+}
+
+@include keyframes(fromRightToCenter){
+  from{
+    @include transform(translate3d( 60%,0,0));
+    opacity: 0;
+  }
+  to{
+    @include transform(translate3d( 0%,0,0));
+    opacity: 1;
+  }
+}
+
+@include keyframes(fromCenterToRight){
+  from{
+    @include transform(translate3d( 0,0,0));
+    opacity: 1;
+  }
+  to{
+    @include transform(translate3d( 40%,0,0));
+    opacity: 0;
+  }
+}

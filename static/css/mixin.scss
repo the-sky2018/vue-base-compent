@@ -1,0 +1,228 @@
+//
+//  全局mixin
+//---------------------------------------------
+//
+//
+//---------------------------------------------
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+@mixin border-top-radius($radius) {
+  border-top-right-radius: $radius;
+  border-top-left-radius: $radius;
+}
+
+@mixin border-right-radius($radius) {
+  border-bottom-right-radius: $radius;
+  border-top-right-radius: $radius;
+}
+
+@mixin border-bottom-radius($radius) {
+  border-bottom-right-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+@mixin border-left-radius($radius) {
+  border-bottom-left-radius: $radius;
+  border-top-left-radius: $radius;
+}
+
+@mixin flex-container() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex-item($flex) {
+  -webkit-flex: $flex;
+  -ms-flex: $flex;
+  flex: $flex;
+}
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow;
+  -o-box-shadow: $shadow;
+  -ms-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+@mixin placeholder($Color) {
+  &::-webkit-input-placeholder {
+    color: $Color !important;
+  }
+  &::-moz-placeholder {
+    color: $Color !important;
+  }
+  &::-ms-input-placeholder {
+    color: $Color !important;
+  }
+}
+
+//@mixin transition($property , $during , $delay , $fn){
+//    @if $delay == 0 {
+//        -webkit-transition: $property $during $fn;
+//        transition: $property $during  $fn;
+//    }@else {
+//        -webkit-transition: $property $during $delay $fn;
+//        transition: $property $during $delay $fn;
+//    }
+//}
+@mixin set-position($top, $right, $bottom, $left) {
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+}
+
+@mixin md-transform($x, $y, $z) {
+  -webkit-transform: translate3d($x, $y, $z);
+  transform: translate3d($x, $y, $z);
+}
+
+@mixin text-cut-dot() {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+//
+// Clear fix
+//-----------------------------------------------------------------
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+//
+// user-select
+// https://developer.mozilla.org/zh-CN/docs/Web/CSS/user-select
+//
+//-----------------------------------------------------------------
+@mixin user-select($action:none) {
+  -ms-user-select: $action;
+  -webkit-user-select: $action;
+  user-select: $action;
+  -moz-user-select: $action;
+}
+
+@mixin oneline-vc($height) {
+  line-height: $height;
+  height: $height;
+}
+
+@mixin block-hc {
+  margin: 0 auto;
+}
+
+@mixin position-hvc {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+//
+// box-sizing
+//-----------------------------------------------------------------
+@mixin box-sizing($boxmodel:border-box) {
+  -webkit-box-sizing: $boxmodel;
+  -moz-box-sizing: $boxmodel;
+  box-sizing: $boxmodel;
+}
+
+@mixin vendor($property, $value) {
+  -webkit-#{$property}: $value;
+  -moz-#{$property}: $value;
+  #{$property}: $value;
+}
+
+@mixin hover-link {
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+@mixin link-colors($normal, $hover: false, $active: false, $visited: false, $focus: false) {
+  color: $normal;
+  @if $visited {
+    &:visited {
+      color: $visited;
+    }
+  }
+  @if $focus {
+    &:focus {
+      color: $focus;
+    }
+  }
+  @if $hover {
+    &:hover {
+      color: $hover;
+    }
+  }
+  @if $active {
+    &:active {
+      color: $active;
+    }
+  }
+}
+
+@mixin unstyled-link {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: inherit;
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin no-margin-collapsing-top() {
+  &:before {
+    content: " ";
+    display: table;
+  }
+}
+
+@mixin no-margin-collapsing-bottom() {
+  &:after {
+    content: " ";
+    display: table;
+  }
+}
+
+@mixin cus-ipt-file {
+  display: inline-block;
+  position: relative;
+  input[type='file'] {
+    position: absolute;
+    top: 0;
+    right: -1px;
+    font-size: 100px;
+    cursor: pointer;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+@mixin image2x($imageURL, $width, $height) {
+  @media(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url($imageURL);
+    background-size: $width $height;
+  }
+}
+

@@ -1,0 +1,248 @@
+$input-color:#555 !default;
+$input-border-color:#ccc !default;
+$input-focus-border-color:#ccc !default;
+$input-disabled-bg-color:#f0f0f0 !default;
+$input-disabled-color:#aeaeae !default;
+$form-item-margin-bottom: 10px !default;
+$padding-base-vertical: 4px !default;
+$form-font-size: 14px !default;
+$form-line-height-base: 1.57142857 !default;
+$state-danger-text: #a94442 !default;
+$state-danger-bg: #f2dede !default;
+$state-danger-border: darken(adjust-hue($state-danger-bg, -10), 5%) !default;
+
+/*22px*/
+
+$form-line-height-computed: $form-font-size * $form-line-height-base !default;
+$input-height-base: ($form-line-height-computed + ($padding-base-vertical * 2) + 2) !default;
+//
+// Form
+//------------------------------------
+.form-item {
+  position: relative;
+  margin-bottom: $form-item-margin-bottom;
+  &.has-error {
+    .form-control {
+      border-color: $state-danger-border;
+      &:focus {
+        border-color: darken($state-danger-border, 10%);
+      }
+    }
+  }
+}
+
+
+/* input,select,textarea */
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: $padding-base-vertical 8px;
+  font-size: $form-font-size;
+  line-height: $form-line-height-base;
+  height: $input-height-base;
+  color: $input-color;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid $input-border-color;
+  border-radius: 2px;
+  outline: none;
+  -webkit-transition: all .25s linear;
+  transition: all .25s linear;
+  &:focus {
+    border-color: $input-focus-border-color;
+    outline: 0;
+  }
+}
+
+.error-text {
+  color: $state-danger-text;
+}
+
+textarea.form-control {
+  height: auto;
+}
+
+.form-item label,
+.form-item .label {
+  color: #737373;
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+  opacity: 1;
+}
+
+.form-control[disabled],
+fieldset[disabled] .form-control {
+  color: $input-disabled-color;
+  cursor: not-allowed;
+}
+
+.checkbox-block,
+.radio-block {
+  position: relative;
+  display: block;
+  padding-left: 20px;
+  // margin-bottom: 10px; // 是否加margin-bottom取决于全局line-height设置
+  label {
+    min-height: 20px;
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+  }
+}
+
+.checkbox-inline,
+.radio-inline {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 0;
+  vertical-align: middle;
+  font-weight: normal;
+  cursor: pointer;
+  padding-left: 20px;
+  label {
+    margin-bottom: 0;
+  }
+}
+
+.checkbox-block input[type=checkbox],
+.radio-block input[type=radio],
+.checkbox-inline input[type=checkbox],
+.radio-inline input[type=radio] {
+  position: absolute;
+  left: 0;
+  margin-top: 4px;
+}
+
+//
+// horizonal item
+//------------------------------------
+.form-horizontal {
+  .form-item {
+    @include clearfix();
+  }
+  .form-item label,
+  .form-item .label {
+    padding-top: $padding-base-vertical + 1px;
+    margin-bottom: 0;
+  }
+}
+
+.form-item.horizonal {
+  label,
+  .label {
+    float: left;
+  }
+}
+
+//
+// input group
+//------------------------------------
+.input-group {
+  display: table;
+  width: 100%;
+  position: relative;
+  border-collapse: separate;
+}
+
+.input-group .form-control,
+.input-group .input-group-btn {
+  display: table-cell;
+}
+
+.input-group .form-control {
+  width: 100%;
+  position: relative;
+  height: 38px;
+}
+
+.input-group .form-control:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group-btn {
+  background-color: $input-border-color;
+  padding: 0px 15px;
+  color: white;
+  font-size: 16px;
+  border: 1px solid $input-border-color;
+  line-height: 1;
+  border-radius: 2px;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: center;
+  cursor: pointer;
+  width: 1%;
+}
+
+.input-group-btn:hover,
+.input-group-btn.hover {
+  background-color: $input-border-color;
+  border-color: $input-border-color;
+}
+
+.input-group-btn.disabled,
+.input-group-btn.disabled:hover,
+.input-group-btn.hover.disabled {
+  background-color: #A3E2FF;
+  border-color: #A3E2FF;
+  cursor: not-allowed;
+}
+
+.input-group-btn:last-child {
+  border-left: none;
+  border-radius: 2px;
+}
+
+//
+// form-static
+//
+.form-control-static {
+  padding-top: $padding-base-vertical + 1;
+  padding-bottom: $padding-base-vertical + 1;
+  display: block;
+}
+
+//
+// from-require
+//
+.form-required {
+  display: inline-block;
+  vertical-align: middle;
+  &:before {
+    content: "*";
+    color: #fa5b5b;
+    padding: 0 2px;
+  }
+}
+
+//
+// action button group
+//
+.form-button-groups {
+  @include display(flex);
+  &.with-btn-left {
+    @include justify-content(flex-start);
+  }
+  &.with-btn-center {
+    @include justify-content(center);
+  }
+  &.with-btn-right {
+    @include justify-content(flex-end);
+  }
+  .button {
+    margin-left: 10px;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+

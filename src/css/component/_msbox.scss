@@ -1,0 +1,56 @@
+$left-width: 70px;
+.msbox-create-win {
+
+  .file-info-block {
+    padding: 10px 0;
+    .file {
+      @include calc(width, "100% - 80px");
+    }
+  }
+
+  .user-block .tips {
+    line-height: $line-height;
+  }
+  .comments-block {
+    .right {
+      position: relative;
+      .comment-tip {
+        position: absolute;
+        right: 6px;
+        top: -22px;
+        padding-right: 6px;
+      }
+    }
+  }
+  .end-date-block {
+    .datepicker {
+      position: relative;
+      width: 240px;
+      cursor: pointer;
+      .date-end{
+        cursor: pointer;
+      }
+    }
+  }
+
+  .box-mem-block {
+    .contibutor-input,.receiver-input {
+      width: 100%;
+      padding: 0px;
+      border: 0px;
+      height: auto;
+
+      .choose-contain{
+        width: 100%;
+
+        .ep-share{
+          background-color: white;
+        }
+      }
+    }
+  }
+
+  .tip-word {
+    color: #aaaaaa;
+  }
+}
