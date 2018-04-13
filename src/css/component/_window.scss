@@ -55,7 +55,7 @@ $phone: 200px;
     padding-right: 44px;
     padding-left: 10px;
     z-index: 2;
-    cursor: move;
+    /*cursor: move;*/
     background-color: $win-header-bg-color;
     height: $win-header-height;
     line-height: $win-header-height;
@@ -120,11 +120,11 @@ $phone: 200px;
   }
 }
 
-.m-window.show {
+/*.m-window.show {
   opacity: 1;
   @include md-transform(0, 0, 0);
   @include box-shadow(0 2px 12px $win-dropshadow-color, 0 0 50px $win-dropshadow-color);
-}
+}*/
 
 .m-window-overlayer {
   position: fixed;
